@@ -2,11 +2,33 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <!--el viewport lo que hace es que se vea bien en un dispositivo mobil-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog de Cafe</title>
-    <link rel="stylesheet" href="./public/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Página web de blog de café"> 
+    <!--Prefech
+    es para descargar la siguiente pagina q esperamos q el usuario visite
+    para mejorar experiencia de usuario
+    con google analitycs vas a saber cual es la pagina q mas visitan y en esa 
+   se pone el prefech , no podemos poner todas porque no van a ser rapidas todas
+   tiene q ser la más visitada-->
+    <link rel="prefetch" href="nosotros.html" as="document">
+    <link rel="prefetch" href="nosotros.html" as="document">
+    <link rel="prefetch" href="nosotros.html" as="document">
+
+    <!--Preload-->
+    <!--se usa para lo que quiero descargar automaticamente
+    despues con  lazy loading se descargan a medida q lo necesitamos-->
+    <link rel="preload" href="./public/css/normalize.css" as="style">
     <link rel="stylesheet" href="./public/css/normalize.css">
+
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" crossorigin="crossorigin" as="font">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="preload" href="./public/css/style.css" as="style">
+    <link rel="stylesheet" href="./public/css/style.css">
+
+
 </head>
 <body> 
   <header class="header">
@@ -37,7 +59,15 @@
 
         <article class="entrada">
             <div class="entrada__imagen">
-              <img src="./public/imagenes/blog1.jpg" alt="imagen-blog">
+                 <!--si el navegador lo permite carga el source que son imagenes
+                mas livianas y sino va a ir a la etiqueta img que si lo soportan
+               todos los navegadores-->
+                <picture>
+                    <source loading="lazy" srcset="./public/imagenes/blog1.jpg" type="image/webp">
+                    <img loading="lazy" src="./public/imagenes/blog1.jpg" alt="imagen-blog">
+                </picture>
+                <!--lazy loading: descarga la imagen a medida q lo voy requiriendo-->
+              
             </div>
 
             <div class="entrada__contenido">
@@ -49,7 +79,10 @@
         </article>
         <article class="entrada">
             <div class="entrada__imagen">
-              <img src="./public/imagenes/blog2.jpg" alt="imagen-blog">
+                <picture>
+                    <source loading="lazy" srcset="./public/imagenes/blog2.jpg" type="image/webp">
+                    <img loading="lazy" src="./public/imagenes/blog2.jpg" alt="imagen-blog">
+                </picture>
             </div>
 
             <div class="entrada__contenido">
@@ -61,7 +94,10 @@
         </article>
         <article class="entrada">
             <div class="entrada__imagen">
-              <img src="./public/imagenes/blog3.jpg" alt="imagen-blog">
+                <picture>
+                    <source loading="lazy" srcset="./public/imagenes/blog3.jpg" type="image/webp">
+                    <img loading="lazy" src="./public/imagenes/blog3.jpg" alt="imagen-blog">
+                </picture>
             </div>
 
             <div class="entrada__contenido">
@@ -85,7 +121,7 @@
             <p class="widget-curso__label">Cupo:
                 <span class="widget-curso__info">20</span>
             </p>
-            <a href="entrada.html" class="boton boton--secundario">Más información</a>
+            <a href="entrada.html" class="boton boton--secundario">Más información sobre nuestros cursos</a>
 
         </li>
         <li class="widget-curso">
@@ -96,7 +132,7 @@
             <p class="widget-curso__label">Cupo:
                 <span class="widget-curso__info">20</span>
             </p>
-            <a href="entrada.html" class="boton boton--secundario">Más información</a>
+            <a href="entrada.html" class="boton boton--secundario">Más información sobre nuestros cursos</a>
 
         </li>
 
@@ -121,4 +157,5 @@
         </div>
       </div>
 </footer>
+<script src="js/modernizr.js"></script>
 </html>
